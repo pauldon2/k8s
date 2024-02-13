@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kuber-2
+  name: demo-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,11 +12,11 @@ spec:
   #  targetRevision: master  # For Helm, this refers to the chart version.
     repoURL: https://github.com/pauldon2/k8s.git
     targetRevision: HEAD  # For Helm, this refers to the chart version.
-    path: lesson-30/dev/kuber  # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
+    path: argocd/demo-dev/applications  # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: kuber-2
+    namespace: demo-app
 
   # Sync policy
   syncPolicy:
